@@ -1,0 +1,5 @@
+Manifest-Version: 0.4
+Class-Path: lib/ecouteMetier.jar:.
+Created-By: Flupi
+Main-Class: editeur.Controleur
+

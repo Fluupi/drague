@@ -1,0 +1,5 @@
+Manifest-Version: 0.4
+Class-Path: lib/ecouteMetier.jar:.
+Created-By: Barbet Alexandre Bissombolo Siega Camara Aboubacar Jomain Floriand
+Main-Class: editeur.Controleur
+
