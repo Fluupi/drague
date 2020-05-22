@@ -1,7 +1,7 @@
+javac -cp bin/lib/ecouteMetier.jar:bin/lib/jdom-2.0.6.jar:. -d bin/ @compile.list
+
 if [ "$#" -eq 1 ]
 then
-	cd src
-	jar -cvfm ../exec/Editeur.jar MANIFEST.MF @compile.list
-else
-	javac -cp bin/lib/ecouteMetier.jar:. -d bin/ @compile.list
+	cd bin
+	./jar.sh
 fi

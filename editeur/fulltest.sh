@@ -1,2 +1,3 @@
-./compile.sh
-./test.sh o 
+./compile.sh jar
+cd exec/
+./lancer.sh o

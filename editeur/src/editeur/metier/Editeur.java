@@ -2,6 +2,10 @@ package editeur.metier;
 
 import ecouteMetier.AbstractModeleEcoutable;
 
+import org.jdom2.*;
+import org.jdom2.input.*;
+import org.jdom2.output.*;
+
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -91,7 +95,73 @@ public class Editeur extends AbstractModeleEcoutable
 	 */
 	public void exporterLivreC()
 	{
-		livreCourant.exporter();
+		//Définition de la structure XML
+		Element racine = new Element("livre");
+
+		Element titre = new Element("titre");
+		titre.setText(livreCourant.getTitre());
+		racine.addContent(titre);
+
+		Element auteur = new Element("auteur");
+		auteur.setText(livreCourant.getAuteur());
+		racine.addContent(auteur);
+
+		Element paragraphes = new Element("paragraphes");
+
+		for(int i=0; i<livreCourant.getTaille(); i++)
+		{
+			Paragraphe p = livreCourant.getP(i);
+
+			Element paragraphe = new Element("paragraphe");
+			paragraphe.setAttribute(new Attribute("num",""+(i+1)));
+			paragraphe.setAttribute(new Attribute("lieu","N/A"));
+
+			Element texteParagraphe = new Element("texte");
+			texteParagraphe.setText(p.getTexte());
+			paragraphe.addContent(texteParagraphe);
+
+			if(p.getNbChoix()>0)
+			{
+				Element choix;
+				Element texteChoix;
+				Element numChoix;
+
+				for(int j=0; j<p.getNbChoix(); j++)
+				{
+					choix = new Element("choix");
+
+					choix.setAttribute(new Attribute("cible",""+p.getChoix(j)));
+					choix.setText(p.getTexteChoix(j));
+
+					paragraphe.addContent(choix);
+				}
+			}
+
+			paragraphes.addContent(paragraphe);
+		}
+
+		racine.addContent(paragraphes);
+
+		Element lieux = new Element("lieux");
+
+		racine.addContent(lieux);
+
+		Element personnages = new Element("personnages");
+
+		racine.addContent(personnages);
+
+		org.jdom2.Document document = new Document(racine);
+
+		//Exportation de la structure
+		try
+		{
+			String dossier = CHEMIN_RES + livreCourant.getNomFichier();
+			new File(dossier).mkdir();
+
+			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+			sortie.output(document, new FileOutputStream(dossier+"/livre.xml"));
+		}
+		catch (IOException e){}
 	}
 
 	/**

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livre>
+  <titre>exemple</titre>
+  <auteur>auteur</auteur>
+  <paragraphes>
+    <paragraphe num="1" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="2">Vous rencontrez un chien et lui donnez une boulette de riz.</choix>
+      <choix cible="3">Vous rencontrez un faisan et lui donnez une boulette de riz.</choix>
+      <choix cible="4">Vous rencontrez un singe et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez seul à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="2" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="7">Vous rencontrez un faisan et lui donnez une boulette de riz.</choix>
+      <choix cible="8">Vous rencontrez un singe et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="3" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="9">Vous rencontrez un chien et lui donnez une boulette de riz.</choix>
+      <choix cible="10">Vous rencontrez un singe et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="4" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="11">Vous rencontrez un chien et lui donnez une boulette de riz.</choix>
+      <choix cible="12">Vous rencontrez un faisan et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="5" lieu="N/A">
+      <texte>Vous avez perdu à cause du nombre d'Oni présents sur Onigashima.</texte>
+      <choix cible="1">Retenter l'aventure.</choix>
+      <choix cible="6">Abandonner</choix>
+    </paragraphe>
+    <paragraphe num="6" lieu="N/A">
+      <texte>Vous avez perdu.</texte>
+    </paragraphe>
+    <paragraphe num="7" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un singe et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="8" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un faisan et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="9" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un singe et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="10" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un chien et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="11" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un faisan et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="12" lieu="N/A">
+      <texte>Vous êtes Momotaro, et cherchez à vaincre Akandoji le chef des Oni de Onigashima.</texte>
+      <choix cible="13">Vous rencontrez un chien et lui donnez une boulette de riz.</choix>
+      <choix cible="5">Vous partez avec ce nouvel ami à Onigashima.</choix>
+    </paragraphe>
+    <paragraphe num="13" lieu="N/A">
+      <texte>Accompagné par vos nouveaux amis, vous parvenez à Onigashima et battez Akandoji et ses sbires.</texte>
+    </paragraphe>
+  </paragraphes>
+  <lieux />
+</livre>
