@@ -71,4 +71,12 @@
     </paragraphe>
   </paragraphes>
   <lieux />
+  <personnages>
+    <personnage num="1" nom="Mario">
+      Personnage emblématique de la firme Nintendo.
+      <expressions>
+        <expression num="1" affiche="saut" />
+      </expressions>
+    </personnage>
+  </personnages>
 </livre>

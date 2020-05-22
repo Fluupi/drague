@@ -22,7 +22,12 @@ public class Editeur extends AbstractModeleEcoutable
 	/**
 	 * Chemin vers dossier des ressources (emplacement des fichiers de livres)
 	 */
-	public static final String CHEMIN_RES = "../res/";
+	public static String chemin_res;
+
+	/**
+	 * Séparateur fichier de l'OS
+	 */
+	public static String separateur;
 
 	/**
 	 * Noms de fichier des livres présents dans le dossier res
@@ -46,12 +51,15 @@ public class Editeur extends AbstractModeleEcoutable
 	 *
 	 * @param nomFichier Nom du fichier à ouvrir
 	 */
-	public Editeur(String nomFichier)
+	public Editeur(char os, String nomFichier)
 	{
+		Editeur.separateur = (os=='l'?"/":"\\");
+		Editeur.chemin_res = ".."+Editeur.separateur+"res"+Editeur.separateur;
+
 		chargerTitresLivres();
 
 		if(livres.contains(nomFichier))
-			livreCourant = new Livre(nomFichier);
+			livreCourant = chargerLivre(nomFichier);
 		else
 			creerLivre(nomFichier, "auteur");
 
@@ -62,12 +70,15 @@ public class Editeur extends AbstractModeleEcoutable
 	 * Constructeur ouvrant le premier livre présent dans le dossier res, si le
 	 * dossier est vide, crée un livre et l'ouvre
 	 */
-	public Editeur()
+	public Editeur(char os)
 	{
+		Editeur.separateur = (os=='l'?"/":"\\");
+		Editeur.chemin_res = ".."+Editeur.separateur+"res"+Editeur.separateur;
+
 		chargerTitresLivres();
 
 		if(livres.size()!=0)
-			livreCourant = new Livre(livres.get(0));
+			livreCourant = chargerLivre(livres.get(0));
 		else
 			creerLivre("titre", "auteur");
 
@@ -80,18 +91,67 @@ public class Editeur extends AbstractModeleEcoutable
 	 */
 	public void chargerTitresLivres()
 	{
-		File[] repertoire = new File(Editeur.CHEMIN_RES).listFiles();
+		File[] repertoire = new File(Editeur.chemin_res).listFiles();
 		livres.clear();
 
 		for(int i=0; i<repertoire.length; i++)
-			if(Pattern.matches("[a-zA-Z0-9_]+.ldveh", repertoire[i].getName()))
-				livres.add(
-					repertoire[i].getName().substring(0, repertoire[i].getName().length()-6)
-							);
+			if(repertoire[i].isDirectory()
+			&& Arrays.asList(repertoire[i].list()).contains("livre.xml"))
+				livres.add(repertoire[i].getName());
+	}
+
+	public Livre chargerLivre(String nomFichier)
+	{
+		org.jdom2.Document document;
+		Element racine;
+
+		SAXBuilder sxb = new SAXBuilder();
+
+		try
+		{
+			//Définition du fichier à extraire
+			document = sxb.build(new File(Editeur.chemin_res + nomFichier +
+									Editeur.separateur + "livre.xml"));
+
+			racine = document.getRootElement();
+
+			Livre l = new Livre(racine.getChild("titre").getText(),
+								racine.getChild("auteur").getText());
+
+			for(Element paragraphe : racine.getChild("paragraphes").getChildren("paragraphe"))
+			{
+				int num = paragraphe.getAttribute("num").getIntValue()-1;
+				//int lieu = Integer.parseInt(paragraphe.getAttribute("lieu"))-1;
+
+				l.ajouterParagraphe(num, paragraphe.getChild("texte").getText());
+
+				for(Element choix : paragraphe.getChildren("choix"))
+				{
+					l.creerLien(num, choix.getAttribute("cible").getIntValue(), choix.getText());
+				}
+			}
+
+			/*for(Element paragraphe : racine.getChild("paragraphes").getChildren("paragraphe"))
+			{
+
+			}*/
+
+			return l;
+		} //Si le fichier de livre n'est pas trouvé
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		catch (JDOMException e)
+		{
+			e.printStackTrace();
+		}
+
+		return new Livre("LivreSimple", "débuggeur");
 	}
 
 	/**
-	 * Exportation du livre courant par sauvegarde de son contenu dans un/son fichier
+	 * Exportation du livre courant par sauvegarde de son contenu dans un/son dossier
 	 */
 	public void exporterLivreC()
 	{
@@ -148,14 +208,31 @@ public class Editeur extends AbstractModeleEcoutable
 
 		Element personnages = new Element("personnages");
 
+		Element personnage = new Element("personnage");
+		personnage.setAttribute("num", "1");
+		personnage.setAttribute("nom", "Mario");
+		personnage.setText("Personnage emblématique de la firme Nintendo.");
+
+		Element expressions = new Element("expressions");
+
+		Element expression = new Element("expression");
+		expression.setAttribute("num", "1");
+		expression.setAttribute("affiche", "saut");
+
+		expressions.addContent(expression);
+
+		personnage.addContent(expressions);
+
+		personnages.addContent(personnage);
+
 		racine.addContent(personnages);
 
+		//Exportation de la structure
 		org.jdom2.Document document = new Document(racine);
 
-		//Exportation de la structure
 		try
 		{
-			String dossier = CHEMIN_RES + livreCourant.getNomFichier();
+			String dossier = chemin_res + livreCourant.getNomFichier();
 			new File(dossier).mkdir();
 
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
@@ -185,17 +262,17 @@ public class Editeur extends AbstractModeleEcoutable
 	{
 		try
 		{
-			File f = new File(Editeur.CHEMIN_RES + livreCourant.getNomFichier()+".ldveh");
+			File f = new File(Editeur.chemin_res + livreCourant.getNomFichier()+".ldveh");
 
 			if(f.delete())
-				System.out.println(Editeur.CHEMIN_RES + livreCourant.getNomFichier()+".ldveh");
+				System.out.println(Editeur.chemin_res + livreCourant.getNomFichier()+".ldveh");
 		}
 		catch(Exception e) { System.out.println("suppression ratée"); }
 
 		chargerTitresLivres();
 
 		if(livres.size()!=0)
-			livreCourant = new Livre(livres.get(0));
+			livreCourant = chargerLivre(livres.get(0));
 		else
 			creerLivre("titre", "auteur");
 

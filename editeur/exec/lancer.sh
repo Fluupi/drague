@@ -1,1 +1,1 @@
-java -jar Editeur.jar $1 $2
+java -jar Editeur.jar l $1 $2

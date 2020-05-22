@@ -18,4 +18,7 @@ editeur/vue/ecouteur/VueParagraphe.class
 
 editeur/vue/onglet/OngletLecture.class
 editeur/vue/onglet/OngletLivre.class
+editeur/vue/onglet/OngletLivre$PopupNvLivre.class
 editeur/vue/onglet/OngletParagraphe.class
+editeur/vue/onglet/OngletParagraphe$PopupNvParagraphe.class
+editeur/vue/onglet/OngletParagraphe$PopupReponse.class

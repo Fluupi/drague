@@ -45,9 +45,9 @@ public class Controleur
 	 *
 	 * @param ihm Précise si le programme est à lancer avec la partie vue
 	 */
- 	public Controleur(boolean ihm) throws InterruptedException
+ 	public Controleur(char os, boolean ihm) throws InterruptedException
  	{
- 		this.editeur = new Editeur();
+ 		this.editeur = new Editeur(os);
 
  		if(ihm)
 		{
@@ -64,9 +64,9 @@ public class Controleur
 	 * @param nomFichier Nom du fichier à ouvrir, si le fichier est introuvable
 	 *                   alors l'éditeur créera un livre avec ce nom de fichier
 	 */
- 	public Controleur(boolean ihm, String nomFichier)
+ 	public Controleur(char os, boolean ihm, String nomFichier)
  	{
- 		this.editeur = new Editeur(nomFichier);
+ 		this.editeur = new Editeur(os, nomFichier);
 
  		if(ihm)
 		{
@@ -149,7 +149,7 @@ public class Controleur
 
 				int numLivre = Integer.parseInt(sc.nextLine());
 
-				editeur.setLivreC(new Livre(editeur.getTitresLivres().get(numLivre)));
+				editeur.setLivreC(editeur.chargerLivre(editeur.getTitresLivres().get(numLivre)));
 				l = editeur.getLivreC();
 			}
 			else if(reponse.equals("S"))
@@ -310,7 +310,7 @@ public class Controleur
 	 */
 	public void changerLivreCourant(int i)
 	{
-		editeur.setLivreC(new Livre(editeur.getTitresLivres().get(i)));
+		editeur.setLivreC(editeur.chargerLivre(editeur.getTitresLivres().get(i)));
 	}
 
 	/**
@@ -463,10 +463,10 @@ public class Controleur
 	 */
 	public static void main(String[] args) throws InterruptedException
 	{
-		if(args.length==2)
-			new Controleur(args[0].equals("o"), args[1]);
+		if(args.length==3)
+			new Controleur(args[0].charAt(0), args[1].equals("o"), args[2]);
 		else
-			new Controleur(args[0].equals("o"));
+			new Controleur(args[0].charAt(0), args[1].equals("o"));
 	}
 
 }

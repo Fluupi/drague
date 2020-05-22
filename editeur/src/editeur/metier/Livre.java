@@ -33,7 +33,7 @@ public class Livre extends AbstractModeleEcoutable
 	 */
 	private ArrayList<Paragraphe> paragraphes = new ArrayList<Paragraphe>();
 
-	/*  Constructeurs  */
+	/*  Constructeur  */
 	/**
 	 * Constructeur de Livre utilisant uniquement le titre et l'auteur et créant
 	 * un premier paragraphe
@@ -43,58 +43,11 @@ public class Livre extends AbstractModeleEcoutable
 	 */
 	public Livre(String titre, String auteur)
 	{
-		this.titre  = titre;
-		this.auteur = auteur;
+		this.titre      = titre;
+		this.nomFichier = this.titre.replace(" ", "_");
+		this.auteur     = auteur;
 
 		paragraphes.add(new Paragraphe("1er paragraphe"));
-	}
-
-	/**
-	 * Constructeur de Livre utilisant un nom de fichier pour extraire livre
-	 * entier à partir du dossier res
-	 *
-	 * @param nomFichier
-	 */
-	public Livre(String nomFichier)
-	{
-		try
-		{
-			//Définition du fichier à extraire
-			Scanner sc = new Scanner(new File(Editeur.CHEMIN_RES+nomFichier+".ldveh"));
-			this.nomFichier = nomFichier;
-
-			//Extraction de la première ligne du fichier (nomFichier:titre:auteur)
-			String[] desc = sc.nextLine().split(":");
-			titre  = desc[1];
-			auteur = desc[2].substring(0, desc[2].length()-1);
-
-			//Définition des variables nécessaires à l'extraction des paragraphes
-			String ligne;
-			String numPara;
-			int i;
-
-			//Pour chaque ligne de paragraphe
-			while(sc.hasNextLine())
-			{
-				//On extrait la ligne à partir du début de son contenu
-				ligne = sc.nextLine().substring(2);
-				numPara = "";
-
-				//Extraction du contenu de la ligne de paragraphe
-				for(i=0; i<ligne.length()-2 && !ligne.substring(i, i+2).equals("--"); i++)
-					numPara+=ligne.substring(i,i+1);
-
-				//On importe un Paragraphe à partir de cette ligne et on l'ajoute
-				//à la liste des paragraphes du Livre
-				paragraphes.add(Paragraphe.importer(ligne.substring(i+2)));
-			}
-
-			sc.close();
-		} //Si le fichier de livre n'est pas trouvé
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	/*  Getters  */
@@ -164,47 +117,6 @@ public class Livre extends AbstractModeleEcoutable
 
 	/*  Setters  */
 	/**
-	 * Permet de sauvegarder le contenu du livre dans le fichier correspondant
-	 * Crée le fichier au besoin
-	 */
-	public void exporter()
-	{
-		File f;
-
-		if(nomFichier==null)
-		{
-			nomFichier = titre.replaceAll(" ", "_") ;
-			f = new File(Editeur.CHEMIN_RES+nomFichier+".ldveh");
-			if(!f.isFile())
-			{
-				try
-				{
-					f.createNewFile();
-				}
-				catch(IOException e)
-				{
-					System.out.println("AH (création de fichier)");
-				}
-			}
-		}
-		else
-		{
-			f = new File(Editeur.CHEMIN_RES+nomFichier+".ldveh");
-		}
-
-		try
-		{
-			FileWriter fw = new FileWriter(f,false);
-			fw.write(""+this);
-			fw.close();
-		}
-		catch(IOException ioe)
-		{
-			System.err.println("IOException:" + ioe.getMessage());
-		}
-	}
-
-	/**
 	 * Permet de modifier le titre du livre
 	 *
 	 * @param newTitre nouveau titre du livre
@@ -234,6 +146,18 @@ public class Livre extends AbstractModeleEcoutable
 	public void creerParagraphe(String texte)
 	{
 		paragraphes.add(new Paragraphe(texte));
+		signalChgt();
+	}
+
+	/**
+	 * Permet d'ajouter un nouveau paragraphe à la liste à un emplacement précis
+	 *
+	 * @param texte Texte du nouveau paragraphe
+	 * @param i     Emplacement du nouveau paragraphe dans la liste
+	 */
+	public void ajouterParagraphe(int i, String texte)
+	{
+		paragraphes.add(i, new Paragraphe(texte));
 		signalChgt();
 	}
 
