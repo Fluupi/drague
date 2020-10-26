@@ -1,0 +1,17 @@
+src/editeur/Controleur.java
+
+src/editeur/metier/Choix.java
+src/editeur/metier/Editeur.java
+src/editeur/metier/Livre.java
+src/editeur/metier/Paragraphe.java
+
+src/editeur/vue/Fenetre.java
+
+src/editeur/vue/onglet/OngletLecture.java
+src/editeur/vue/onglet/OngletLivre.java
+src/editeur/vue/onglet/OngletParagraphe.java
+
+src/editeur/vue/ecouteur/VueChoix.java
+src/editeur/vue/ecouteur/VueEditeur.java
+src/editeur/vue/ecouteur/VueLivre.java
+src/editeur/vue/ecouteur/VueParagraphe.java

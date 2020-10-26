@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livre>
+  <titre>autre</titre>
+  <auteur>camara</auteur>
+  <paragraphes>
+    <paragraphe num="1" lieu="N/A">
+      <texte>je suis dans ma chambre</texte>
+    </paragraphe>
+    <paragraphe num="2" lieu="N/A">
+      <texte>je suis encore dans ma chambre</texte>
+    </paragraphe>
+    <paragraphe num="3" lieu="N/A">
+      <texte>je suis dans dans la classe</texte>
+    </paragraphe>
+    <paragraphe num="4" lieu="N/A">
+      <texte>je vie dans une ville tres cool</texte>
+    </paragraphe>
+    <paragraphe num="5" lieu="N/A">
+      <texte>je suis dans la ville de caen</texte>
+    </paragraphe>
+    <paragraphe num="6" lieu="N/A">
+      <texte>je vais terminer le dernier teste</texte>
+    </paragraphe>
+  </paragraphes>
+  <lieux />
+  <personnages />
+</livre>

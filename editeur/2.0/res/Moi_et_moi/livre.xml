@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livre>
+  <titre>Moi et moi</titre>
+  <auteur>Moi</auteur>
+  <paragraphes>
+    <paragraphe num="1" lieu="N/A">
+      <texte>Bonzouuur</texte>
+      <choix cible="2">HAHAH</choix>
+    </paragraphe>
+    <paragraphe num="2" lieu="N/A">
+      <texte></texte>
+    </paragraphe>
+  </paragraphes>
+  <lieux />
+  <personnages />
+</livre>

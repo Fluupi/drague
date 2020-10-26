@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livre>
+  <titre>premier</titre>
+  <auteur>camara</auteur>
+  <paragraphes>
+    <paragraphe num="1" lieu="N/A">
+      <texte>premier paragraphe</texte>
+    </paragraphe>
+    <paragraphe num="2" lieu="N/A">
+      <texte>deuxieme paragraphe</texte>
+    </paragraphe>
+  </paragraphes>
+  <lieux />
+  <personnages />
+</livre>
