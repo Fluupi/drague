@@ -1,27 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<livre>
-  <titre>autre</titre>
-  <auteur>camara</auteur>
-  <paragraphes>
-    <paragraphe num="1" lieu="N/A">
-      <texte>je suis dans ma chambre</texte>
-    </paragraphe>
-    <paragraphe num="2" lieu="N/A">
-      <texte>je suis encore dans ma chambre</texte>
-    </paragraphe>
-    <paragraphe num="3" lieu="N/A">
-      <texte>je suis dans dans la classe</texte>
-    </paragraphe>
-    <paragraphe num="4" lieu="N/A">
-      <texte>je vie dans une ville tres cool</texte>
-    </paragraphe>
-    <paragraphe num="5" lieu="N/A">
-      <texte>je suis dans la ville de caen</texte>
-    </paragraphe>
-    <paragraphe num="6" lieu="N/A">
-      <texte>je vais terminer le dernier teste</texte>
-    </paragraphe>
-  </paragraphes>
-  <lieux />
-  <personnages />
-</livre>
+<histoire>
+  <titre>Un exemple d'histoire</titre>
+
+  <auteur>Cétromaranlanonima</auteur>
+
+  <personnages>
+      <personnage num="1" espece="humain" love="true" affinite_de_base="0">
+          <nom>Nom de Test</nom>
+          <genre>A voir selon ce u'on ajoute</genre>
+          <info_bonus>-Aime les lasagnes-Aime les olives-Déteste le Fromage</info_bonus>
+          <liens_images>
+              <lien_image num="1" lien="Wally_sourit.png" />
+          </liens_images>
+      </personnage>
+  </personnages>
+
+  <lieux>
+      <lieu num="1" nom="Rue Maupassant" lien_image="rue_maupassant.png">
+          <warps>
+              <warp pos_x="25" pos_y="30" cible="2"/>
+          </warps>
+      </lieu>
+      <lieu num="2" nom="Rue Lumière" lien_image="rue_lumière.png">
+          <warps>
+              <warp pos_x="10" pos_y="90" cible="1"/>
+          </warps>
+      </lieu>
+  </lieux>
+
+  <illustrations>
+      <illustration num="1" lien_image="1.png"/>
+  </illustrations>
+
+  <accessoires>
+      <accessoire num="1" type="t-shirt" prix="21.70" lien_image="1.png">
+          <description>J'avais oublié la description des accessoires et personne ne l'a fait remaruer :c</description>
+      </accessoire>
+  </accessoires>
+
+  <chapitres>
+    <chapitre num="1" titre="Arrivée">
+        <liste_perso>
+            <perso num="1" num_dans_chap="1"/>
+        </liste_perso>
+
+        <liste_lieux>
+            <lieu num="1" num_dans_chap="1"/>
+        </liste_lieux>
+
+        <liste_illu>
+            <illu num="1" num_dans_chap="1"/>
+        </liste_illu>
+
+        <dialogues>
+            <dialogue num="1" lieu_courant="1">
+                <texte>Dialogue 1</texte>
+
+                <declencheurs/>
+
+                <reponses>
+                    <reponse num="1" dialogue_suivant="1">
+                        <texte>On reste au premier dialogue (+26po, +4 amitie avec le premier personnage)</texte>
+                        <effets>
+                            <effet str="po + 26"/>
+                            <effet str="amitie 1 + 4"/>
+                        </effets>
+                    </reponse>
+                    <reponse num="2" dialogue_suivant="2">
+                        <texte>On va au second dialogue</texte>
+                        <effets/>
+                    </reponse>
+                </reponses>
+
+                <affichages_personnages>
+                    <affichage_personnage perso="1" posture="1" pos_x="3" pos_y="12" inverse="true" />
+                </affichages_personnages>
+            </dialogue>
+                <dialogue num="2" lieu_courant="1">
+                    <texte>J'ai trop marché, je dois faire une pause...</texte>
+
+                    <declencheurs/>
+
+                    <reponses>
+                        <reponse num="1" dialogue_suivant="2">
+                            <texte>lorem ipsum</texte>
+                            <effets>
+                                <effet str="pa - 2"/>
+                            </effets>
+                        </reponse>
+                        <reponse num="2" dialogue_suivant="2">
+                            <texte>Tente la première réponse d'abord</texte>
+                            <effets>
+                                <effet str="pa = 0"/>
+                            </effets>
+                        </reponse>
+                    </reponses>
+
+                    <affichages_personnages>
+                        <affichage_personnage perso="1" posture="1" pos_x="3" pos_y="12" inverse="false" />
+                    </affichages_personnages>
+                </dialogue>
+        </dialogues>
+    </chapitre>
+  </chapitres>
+</histoire>

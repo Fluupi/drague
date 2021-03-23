@@ -1,17 +1,16 @@
 src/editeur/Controleur.java
 
-src/editeur/metier/Choix.java
-src/editeur/metier/Editeur.java
-src/editeur/metier/Livre.java
-src/editeur/metier/Paragraphe.java
-
 src/editeur/vue/Fenetre.java
 
-src/editeur/vue/onglet/OngletLecture.java
-src/editeur/vue/onglet/OngletLivre.java
-src/editeur/vue/onglet/OngletParagraphe.java
+src/editeur/vue/onglet/Boutique.java
+src/editeur/vue/onglet/Chapitres.java
+src/editeur/vue/onglet/Illustrations.java
+src/editeur/vue/onglet/Lieux.java
+src/editeur/vue/onglet/Personnages.java
 
-src/editeur/vue/ecouteur/VueChoix.java
-src/editeur/vue/ecouteur/VueEditeur.java
-src/editeur/vue/ecouteur/VueLivre.java
-src/editeur/vue/ecouteur/VueParagraphe.java
+src/editeur/vue/popups/Reponse.java
+src/editeur/vue/popups/AffichagePersonnage.java
+src/editeur/vue/popups/InfoBonus.java
+src/editeur/vue/popups/Posture.java
+src/editeur/vue/popups/Declencheur.java
+src/editeur/vue/popups/Warp.java
